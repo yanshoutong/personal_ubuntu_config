@@ -1,0 +1,5 @@
+startup_message off
+deflogin on
+caption always "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%H %Y/%m/%d "
+defscrollback 5000
+vbell off
