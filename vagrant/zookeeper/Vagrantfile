@@ -1,0 +1,32 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+
+BOX = "bento/ubuntu-16.04"
+NODES = 3
+ZOOKEEPER_TGZ = "http://mirrors.shu.edu.cn/apache/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz"
+
+Vagrant.configure("2") do |config|
+    (1..NODES).each do |i|
+        config.vm.define "zk#{i}" do |subconfig|
+            subconfig.vm.box = BOX
+            subconfig.vm.hostname = "zk#{i}"
+            subconfig.vm.network :private_network, ip: "10.0.0.#{i + 100}"
+        end
+    end
+
+    config.vm.provision "shell", inline: <<-SHELL
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y vim
+        apt-get install -y openjdk-8-jdk
+        (cd /tmp/; wget $ZOOKEEPER_TGZ; tar xzvf $ZOOKEEPER_TGZ)
+        mkdir /tmp/zookeeper
+        echo `ifconfig eth1 | grep 'inet addr' | cut -d':' -f2 | cut -b 10` > /tmp/zookeeper/myid
+
+    SHELL
+end
