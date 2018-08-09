@@ -8,7 +8,6 @@
 
 BOX = "bento/ubuntu-16.04"
 NODES = 3
-ZOOKEEPER_TGZ = "http://mirrors.shu.edu.cn/apache/zookeeper/zookeeper-3.4.13/zookeeper-3.4.13.tar.gz"
 
 Vagrant.configure("2") do |config|
     (1..NODES).each do |i|
@@ -19,14 +18,5 @@ Vagrant.configure("2") do |config|
         end
     end
 
-    config.vm.provision "shell", inline: <<-SHELL
-        export DEBIAN_FRONTEND=noninteractive
-        apt-get update
-        apt-get install -y vim
-        apt-get install -y openjdk-8-jdk
-        (cd /tmp/; wget $ZOOKEEPER_TGZ; tar xzvf $ZOOKEEPER_TGZ)
-        mkdir /tmp/zookeeper
-        echo `ifconfig eth1 | grep 'inet addr' | cut -d':' -f2 | cut -b 10` > /tmp/zookeeper/myid
-
-    SHELL
+    config.vm.provision "shell", path: "provision/setup.sh"
 end
