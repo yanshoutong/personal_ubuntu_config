@@ -7,7 +7,7 @@ This Vagrantfile describes how to setup three zookeeper servers with specific IP
 
 ### How to play
 
-##### 1. change to this zookpeer directory
+***1. change to this zookpeer directory***
 
 > Vagrantfile and provision folder should be present now
 
@@ -20,13 +20,13 @@ $ ls -F
 	Vagrantfile
 ```
 
-##### 2. issue the following command
+***2. issue the following command***
 
 ```sh
 $ vagrant up
 ```
 
-##### 3. after the **vagrant up** command finished, you will get three servers, hostnames are **zk1**, **zk2** and **zk3**
+***3. after the `vagrant up` command finished, you will get three servers, hostnames are zk1, zk2 and zk3***
 
 ```sh
 $ vagrant status
@@ -48,7 +48,7 @@ and these servers' IP addresses are below
 |zk2|10.0.0.102| 
 |zk3|10.0.0.103| 
 
-##### 4. ssh into each server and bring up zookeeper
+***4. ssh into each server and bring up zookeeper***
 
 ```sh
 [~/zookeeper]$ vagrant ssh zk1
@@ -77,18 +77,18 @@ vagrant@zk1:~$
 
 ```
 
-##### 5. play with zookeeper client (java)
+***5. play with zookeeper client (java)***
 
-***pom.xml***
+`pom.xml`
 
 ```xml
 	<dependency>
-      <groupId>org.apache.zookeeper</groupId>
-      <artifactId>zookeeper</artifactId>
-      <version>3.4.13</version>
-    </dependency>
+		<groupId>org.apache.zookeeper</groupId>
+		<artifactId>zookeeper</artifactId>
+		<version>3.4.13</version>
+	</dependency>
 ```
-***java***
+`java`
 
 ```java
 public class App implements Watcher
@@ -159,5 +159,3 @@ class IStringCallback implements AsyncCallback.StringCallback {
 }
 
 ```
-
-*** EOF ***
