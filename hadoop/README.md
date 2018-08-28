@@ -33,3 +33,9 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
 
 ```
 
+设置**JAVA_HOME**环境变量
+
+```sh
+$ export JAVA_HOME='/usr/lib/jvm/java-8-oracle'
+```
+
