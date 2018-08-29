@@ -25,7 +25,7 @@ vagrant@node2:~$
 
 ### 安装 ntp
 
-在每台server上都安装**ntp** 和 **ntpdate**
+在node1<font color="red">(NTP Server)</font>上安装**ntp** 和 **ntpdate**
 
 ```sh
 $ sudo apt-get install ntp ntpdate -y
@@ -57,11 +57,17 @@ $ sudo service ntp restart
 $ sudo ntpq -c lpeer
 ```
 
-![output](img\ntpq_c_lpeer.png)
+![output](img/ntpq_c_lpeer.png)
 
 ```sh
 $ sudo tail -f /var/log/syslog
 ```
+
+### 配置node2和node3
+
+我们可以采用`创建crontab任务`的方式让node2和node3去和node1（NTP server）进行时间的同步，也可以使用`timedatectl`的方式。个人推荐使用`timedatectl`的方式，因为`systemd-timesyncd.service`是默认启动的服务，且它同样完成NTP的工作。
+
+#### crontab 方式
 
 在node2,node3上配置cron任务
 
@@ -71,8 +77,22 @@ $ crontab -e
 */10 * * * * /usr/sbin/ntpdate 101.0.0.101
 ```
 
-![crontab](img\crontab.png)
+![crontab](img/crontab.png)
 
-### 测试
+测试
 
 ![test](img/test.png)
+
+#### timedatectl 方式
+
+配置timesyncd.conf
+
+```sh
+vagrant@node2:~$ sudo vim  /etc/systemd/timesyncd.conf
+```
+
+![timesyncd.conf](img/timesyncd.png)
+
+测试
+
+![timedatectl test](img/timesyncd_test.png)
