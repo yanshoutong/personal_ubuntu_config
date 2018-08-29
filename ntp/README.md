@@ -37,7 +37,7 @@ $ sudo apt-get install ntp ntpdate -y
 $ vim /etc/ntp.conf
 ```
 
-![/etc/ntp.conf](img\conf_changes.png)
+![/etc/ntp.conf](img/conf_changes.png)
 
 > 请注意我们设置了如下的网段
 >
