@@ -1,0 +1,38 @@
+[user]
+	name = yanshoutong
+	email = yanshoutong@sina.cn
+[core]
+	editor = vim
+	logAllRefUpdates = true
+[color]
+	ui = true
+[color "diff"]
+	meta = blue black bold
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[alias]
+	l = log --color --graph --decorate --pretty=oneline --abbrev-commit
+	l0 = log --color --graph --decorate --pretty=oneline --abbrev-commit -U0
+	la = log --color --graph --decorate --pretty=oneline --abbrev-commit --all
+	lb = log --color --graph --decorate --pretty=oneline --abbrev-commit --all --simplify-by-decoration
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all --
+	dl = log --date-order --color --graph --decorate --pretty=oneline --abbrev-commit
+	dla = log --date-order --color --graph --decorate --pretty=oneline --abbrev-commit --all
+	dlb = log --date-order --color --graph --decorate --pretty=oneline --abbrev-commit --all --simplify-by-decoration
+	dlg = log --date-order --color --graph --decorate
+	d = diff --color
+	dc = diff --color --cached
+	d0 = diff --color --unified=0
+	ci = commit --verbose
+	co = checkout
+	tr = checkout --track
+	s = status --short
+	st = status
+	br = branch
+	mnff = merge --no-ff
+
+[push]
+	default = matching
+
