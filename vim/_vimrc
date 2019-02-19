@@ -60,13 +60,16 @@ if has('syntax') && has('eval')
 endif
 
 
+
 "
 " Vundle
-" 
-" INSTALL: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" INSTALL: git clone https://github.com/VundleVim/Vundle.vim.git   ~/.vim/bundle/Vundle.vim
+
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -91,6 +94,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'pangloss/vim-javascript'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ntpeters/vim-better-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -120,6 +128,12 @@ let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
+
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+
 set nowrap
 set autoindent
 set tabstop=4
@@ -134,6 +148,9 @@ set foldmethod=indent
 nnoremap zO zczA
 ":nnoremap <leaderCharacter>N zczA
 "
-syntax on
-"color dracula
-color ron
+"
+syntax enable
+"set background=dark
+set background=light
+"colorscheme solarized
+colorscheme evening
