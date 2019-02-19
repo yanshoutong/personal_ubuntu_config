@@ -150,7 +150,6 @@ nnoremap zO zczA
 "
 "
 syntax enable
-"set background=dark
-set background=light
-"colorscheme solarized
-colorscheme evening
+highlight Normal ctermfg=grey ctermbg=black
+set background=dark
+colorscheme solarized
